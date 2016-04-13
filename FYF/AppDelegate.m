@@ -1,8 +1,8 @@
 //
 //  AppDelegate.m
-//  FYF
+//  barrister
 //
-//  Created by 徐书传 on 16/4/13.
+//  Created by 徐书传 on 16/3/21.
 //  Copyright © 2016年 Xu. All rights reserved.
 //
 
@@ -13,12 +13,36 @@
 @end
 
 @implementation AppDelegate
+/**
+ *  选择tab 的Index
+ *
+ *  @param index 序号
+ */
 
+-(void)selectTabWithIndex:(NSInteger)index
+{
+    _tabBarCTL.selectedIndex = index;
+}
+
+-(void)initControllersAndConfig
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    _tabBarCTL = [[BaseTabbarController alloc] init];
+    self.window.rootViewController = _tabBarCTL;
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    [self initControllersAndConfig];
+    
+    
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
